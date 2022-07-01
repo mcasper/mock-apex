@@ -1,0 +1,20 @@
+version: "3"
+
+services:
+  mock-apex:
+    image: mock-apex:latest
+    environment:
+      - MOCK_API_TOKEN=token
+    ports:
+      - "4567"
+    networks:
+      - backend
+  busy:
+    image: curlimages/curl
+    depends_on:
+      - mock-apex
+    networks:
+      - backend
+
+networks:
+  backend: {}
