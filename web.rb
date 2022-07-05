@@ -40,6 +40,11 @@ before "/*" do
 end
 
 post "/add_events" do
+  content_type = env["HTTP_CONTENT_TYPE"]
+  if content_type != "application/json"
+    halt 400, "Unsupported request Content-Type, must be application/json"
+  end
+
   data = JSON.parse(request.body.read)
   puts data
   validate_keys(data, {"project_id" => String, "events" => Array})
