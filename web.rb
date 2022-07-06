@@ -54,5 +54,5 @@ post "/add_events" do
     validate_level(event.fetch("level"))
   end
 
-  ""
+  status 204
 end
