@@ -46,7 +46,6 @@ post "/add_events" do
   end
 
   data = JSON.parse(request.body.read)
-  puts data
   validate_keys(data, {"project_id" => String, "events" => Array})
 
   data.fetch("events").each do |event|
