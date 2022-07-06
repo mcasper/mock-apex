@@ -40,7 +40,7 @@ before "/*" do
 end
 
 post "/add_events" do
-  content_type = env["HTTP_CONTENT_TYPE"]
+  content_type = env["CONTENT_TYPE"]
   if content_type != "application/json"
     halt 400, "Unsupported request Content-Type, must be application/json"
   end
